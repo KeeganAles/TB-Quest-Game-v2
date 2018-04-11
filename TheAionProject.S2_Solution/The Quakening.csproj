@@ -44,7 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ActionMenu.cs" />
-    <Compile Include="Assets\UniverseObjects.cs" />
+    <Compile Include="Assets\UniverseObjectsGameObjects.cs" />
+    <Compile Include="Assets\UniverseObjectsSpaceTimeLocations.cs" />
     <Compile Include="Assets\Text.cs" />
     <Compile Include="ConsoleUtilities\ConsoleLayout.cs" />
     <Compile Include="ConsoleUtilities\ConsoleTheme.cs" />
@@ -52,10 +53,13 @@
     <Compile Include="ConsoleUtilities\ConsoleWindowHelper.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Enums\PlayerObjectType.cs" />
+    <Compile Include="Models\GameObject.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\SpaceTimeLocation.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerAction.cs" />
+    <Compile Include="Models\PlayerObject.cs" />
     <Compile Include="Models\Universe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +68,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

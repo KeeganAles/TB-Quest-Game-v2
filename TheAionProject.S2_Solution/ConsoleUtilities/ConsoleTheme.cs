@@ -15,7 +15,7 @@ namespace TheAionProject
         // splash screen colors
         //
         public static ConsoleColor SplashScreenBackgroundColor = ConsoleColor.Black;
-        public static ConsoleColor SplashScreenForegroundColor = ConsoleColor.Green;
+        public static ConsoleColor SplashScreenForegroundColor = ConsoleColor.DarkGreen;
 
         //
         // main console window colors
@@ -26,13 +26,13 @@ namespace TheAionProject
         //
         // console window header colors
         //
-        public static ConsoleColor HeaderBackgroundColor = ConsoleColor.Green;
+        public static ConsoleColor HeaderBackgroundColor = ConsoleColor.DarkGreen;
         public static ConsoleColor HeaderForegroundColor = ConsoleColor.Black;
 
         //
         // console window footer colors
         //
-        public static ConsoleColor FooterBackgroundColor = ConsoleColor.Green;
+        public static ConsoleColor FooterBackgroundColor = ConsoleColor.DarkGreen;
         public static ConsoleColor FooterForegroundColor = ConsoleColor.Black;
 
         //
@@ -55,7 +55,7 @@ namespace TheAionProject
         // status box colors
         //
         public static ConsoleColor StatusBoxBackgroundColor = ConsoleColor.Black;
-        public static ConsoleColor StatusBoxForegroundColor = ConsoleColor.Green;
+        public static ConsoleColor StatusBoxForegroundColor = ConsoleColor.DarkGreen;
         public static ConsoleColor StatusBoxBorderColor = ConsoleColor.DarkBlue;
         public static ConsoleColor StatusBoxHeaderBackgroundColor = ConsoleColor.Black;
         public static ConsoleColor StatusBoxHeaderForegroundColor = ConsoleColor.Red;

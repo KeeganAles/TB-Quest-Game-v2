@@ -17,12 +17,20 @@ namespace TheAionProject
         // list of all space-time locations
         //
         private List<SpaceTimeLocation> _spaceTimeLocations;
+        private List<GameObject> _gameObjects;
 
         public List<SpaceTimeLocation> SpaceTimeLocations
         {
             get { return _spaceTimeLocations; }
             set { _spaceTimeLocations = value; }
         }
+
+        public List<GameObject> GameObjects
+        {
+            get { return _gameObjects; }
+            set { _gameObjects = value; }
+        }
+
 
         #endregion
 
@@ -49,6 +57,7 @@ namespace TheAionProject
         private void IntializeUniverse()
         {
             _spaceTimeLocations = UniverseObjects.SpaceTimeLocations;
+            _gameObjects = UniverseObjectsGameObjects.gameObjects;
         }
 
         #endregion
@@ -344,6 +353,55 @@ namespace TheAionProject
                     }
                 }
             }
+        }
+
+        public bool IsValidGameObjectByLocation(int gameObjectId, int currentSpaceTimeLocation)
+        {
+            List<int> gameObjectIds = new List<int>();
+
+            // create a list of game object IDs in current space-time location
+            foreach(GameObject gameObject in _gameObjects)
+            {
+                if(gameObject.SpaceTimeLocationId == currentSpaceTimeLocation)
+                {
+                    gameObjectIds.Add(gameObject.Id);
+                }
+            }
+
+            // determines if the game object id is a valid id and return the result
+            if (gameObjectIds.Contains(gameObjectId))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public GameObject GetGameObjectById(int Id)
+        {
+            GameObject gameObjectToReturn = null;
+
+            // run through the game object list and grab the correct one
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if(gameObject.Id == Id)
+                {
+                    gameObjectToReturn = gameObject;
+                }
+            }
+
+            // the specified ID was not found in the universe
+            // throw an exception
+
+            if(gameObjectToReturn == null)
+            {
+                string feedbackMessage = $"The Game Object ID {Id} does not exist in the current universe.";
+                throw new ArgumentException(feedbackMessage, Id.ToString());
+            }
+
+            return gameObjectToReturn;
         }
 
         #endregion
