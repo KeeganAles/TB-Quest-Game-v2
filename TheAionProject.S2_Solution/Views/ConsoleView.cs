@@ -136,26 +136,32 @@ namespace TheAionProject
             bool validResponse = false;
             integerChoice = 0;
 
+            // Validate on range if either minimumValue and maximumValue are not 0
+            bool validateRange = (minimumValue != 0 || maximumValue != 0);
+
             DisplayInputBoxPrompt(prompt);
             while (!validResponse)
             {
                 if (int.TryParse(Console.ReadLine(), out integerChoice))
                 {
-                    if (integerChoice >= minimumValue && integerChoice <= maximumValue)
+                    if (validateRange)
                     {
-                        validResponse = true;
-                    }
-                    else
-                    {
-                        ClearInputBox();
-                        DisplayInputErrorMessage($"You must enter an integer value between {minimumValue} and {maximumValue}. Please try again.");
-                        DisplayInputBoxPrompt(prompt);
+                        if (integerChoice >= minimumValue && integerChoice <= maximumValue)
+                        {
+                            validResponse = true;
+                        }
+                        else
+                        {
+                            ClearInputBox();
+                            DisplayInputErrorMessage($"You must enter an integer value between {minimumValue} and {maximumValue}. Please try again.");
+                            DisplayInputBoxPrompt(prompt);
+                        }
                     }
                 }
                 else
                 {
                     ClearInputBox();
-                    DisplayInputErrorMessage($"You must enter an integer value between {minimumValue} and {maximumValue}. Please try again.");
+                    DisplayInputErrorMessage($"You must enter an integer value. Please try again.");
                     DisplayInputBoxPrompt(prompt);
                 }
             }
@@ -494,6 +500,43 @@ namespace TheAionProject
         public void DisplayListOfAllGameObjects()
         {
             DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameUniverse.GameObjects), ActionMenu.MainMenu, "");
+        }
+
+        public int DisplayGetGameObjectToLookAt()
+        {
+            int gameObjectId = 0;
+            bool validGamerObjectId = false;
+
+            // get a list of game objects in the current space-time location
+            List<GameObject> gameObjectsInSpaceTimeLocation = _gameUniverse.GetGameObjectsBySpaceTimeLocationId(_gamePlayer.SpaceTimeLocationID);
+
+            if (gameObjectsInSpaceTimeLocation.Count > 0)
+            {
+                DisplayGamePlayScreen("Look at an Object", Text.GameObjectsChooseList(gameObjectsInSpaceTimeLocation), ActionMenu.MainMenu, "");
+
+                while (!validGamerObjectId)
+                {
+                    // get an integer
+                    GetInteger($"Enter the Id number of the object you wish to look at: ", 0, 0, out gameObjectId);
+
+                    // validate integer as a valid game object id and in current location
+                    if (_gameUniverse.IsValidGameObjectByLocation(gameObjectId, _gamePlayer.SpaceTimeLocationID))
+                    {
+                        validGamerObjectId = true;
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("It appears you entered an invalid game object id. Please try again.");
+                    }
+                }
+            }
+            else
+            {
+                DisplayGamePlayScreen("Look at an Object", "It appears there are no game objects here.", ActionMenu.MainMenu, "");
+            }
+
+            return gameObjectId;
         }
 
         /// <summary>

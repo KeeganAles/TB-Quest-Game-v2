@@ -285,6 +285,34 @@ namespace TheAionProject
             return statusBoxText;
         }
 
+        public static string GameObjectsChooseList(IEnumerable<GameObject> gameObjects)
+        {
+            //display table name and column headers
+            string messageBoxText =
+                "Game Objects\n" +
+                " \n" +
+
+                //display table header
+                "ID".PadRight(10) +
+                "Name".PadRight(30) + "\n" +
+                "---".PadRight(10) +
+                "----------------------".PadRight(30) + "\n";
+
+            //display all traveler objects in rows
+            string gameObjectsRows = null;
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObjectsRows +=
+                    $"{gameObject.Id}".PadRight(10) +
+                    $"{gameObject.Name}".PadRight(30) +
+                    Environment.NewLine;
+            }
+
+            messageBoxText += gameObjectsRows;
+
+            return messageBoxText;
+        }
+
         public static string ListAllGameObjects(IEnumerable<GameObject> gameObjects)
         {
             // display table name and column headers
