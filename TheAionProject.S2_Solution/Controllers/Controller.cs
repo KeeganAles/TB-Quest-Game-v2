@@ -150,6 +150,10 @@ namespace TheAionProject
                         _gameConsoleView.DisplayListOfSpaceTimeLocations();
                         break;
 
+                    case PlayerAction.ListGameObjects:
+                        _gameConsoleView.DisplayListOfAllGameObjects();
+                        break;
+
                     case PlayerAction.Exit:
                         _playingGame = false;
                         break;

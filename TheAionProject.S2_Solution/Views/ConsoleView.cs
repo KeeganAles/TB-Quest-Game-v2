@@ -491,6 +491,11 @@ namespace TheAionProject
             Console.ForegroundColor = ConsoleTheme.InputBoxForegroundColor;
         }
 
+        public void DisplayListOfAllGameObjects()
+        {
+            DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameUniverse.GameObjects), ActionMenu.MainMenu, "");
+        }
+
         /// <summary>
         /// get the player's initial information at the beginning of the game
         /// </summary>

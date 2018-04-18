@@ -24,6 +24,7 @@ namespace TheAionProject
         PlayerInventory,
         PlayerTreasure,
         PlayerLocationsVisited,
+        ListGameObjects,
         ListSpaceTimeLocations,
         ListItems,
         ListTreasures,
