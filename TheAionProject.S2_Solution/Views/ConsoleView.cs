@@ -636,8 +636,16 @@ namespace TheAionProject
 
         public void DisplayLookAround()
         {
+            //get current space-time location
             SpaceTimeLocation currentSpaceTimeLocation = _gameUniverse.GetSpaceTimeLocationById(_gamePlayer.SpaceTimeLocationID);
-            DisplayGamePlayScreen("Current Location", Text.LookAround(currentSpaceTimeLocation), ActionMenu.MainMenu, "");
+
+            // get list of game objects in current space-time location
+            List<GameObject> gameObjectsInCurrentSpaceTimeLocation = _gameUniverse.GetGameObjectsBySpaceTimeLocationId(_gamePlayer.SpaceTimeLocationID);
+
+            string messageBoxText = Text.LookAround(currentSpaceTimeLocation) + Environment.NewLine + Environment.NewLine;
+            messageBoxText += Text.GameObjectsChooseList(gameObjectsInCurrentSpaceTimeLocation);
+
+            DisplayGamePlayScreen("Current Location", messageBoxText, ActionMenu.MainMenu, "");
         }
 
         public int DisplayGetNextSpaceTimeLocation()
