@@ -539,6 +539,11 @@ namespace TheAionProject
             return gameObjectId;
         }
 
+        public void DisplayGameObjectinfo(GameObject gameObject)
+        {
+            DisplayGamePlayScreen("Current Location", Text.LookAt(gameObject), ActionMenu.MainMenu, "");
+        }
+
         /// <summary>
         /// get the player's initial information at the beginning of the game
         /// </summary>

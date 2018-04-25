@@ -19,7 +19,8 @@ namespace TheAionProject
                 Type = PlayerObjectType.Food,
                 CanInventory = false,
                 IsConsumable = true,
-                IsVisible = true
+                IsVisible = true,
+                Value = 30
             },
 
             new PlayerObject
@@ -31,7 +32,8 @@ namespace TheAionProject
                 Type = PlayerObjectType.Food,
                 CanInventory = false,
                 IsConsumable = true,
-                IsVisible = true
+                IsVisible = true,
+                Value = 30
             },
 
             new PlayerObject
@@ -43,7 +45,8 @@ namespace TheAionProject
                 Type = PlayerObjectType.Food,
                 CanInventory = false,
                 IsConsumable = true,
-                IsVisible = true
+                IsVisible = true,
+                Value = 30
             },
 
             new PlayerObject
@@ -55,7 +58,8 @@ namespace TheAionProject
                 Type = PlayerObjectType.Water,
                 CanInventory = false,
                 IsConsumable = true,
-                IsVisible = true
+                IsVisible = true,
+                Value = 15
             },
 
             new PlayerObject
@@ -67,7 +71,8 @@ namespace TheAionProject
                 Type = PlayerObjectType.Water,
                 CanInventory = false,
                 IsConsumable = true,
-                IsVisible = true
+                IsVisible = true,
+                Value = 15
             },
 
             new PlayerObject
@@ -79,7 +84,8 @@ namespace TheAionProject
                 Type = PlayerObjectType.Water,
                 CanInventory = false,
                 IsConsumable = true,
-                IsVisible = true
+                IsVisible = true,
+                Value = 15
             },
 
             new PlayerObject
@@ -91,7 +97,8 @@ namespace TheAionProject
                 Type = PlayerObjectType.Treasure,
                 CanInventory = true,
                 IsConsumable = true,
-                IsVisible = true
+                IsVisible = true,
+                Value = 50
             }
         };
 

@@ -24,5 +24,7 @@ namespace TheAionProject
 
         public bool IsVisible { get; set; }
 
+        public int Value { get; set; }
+
     }
 }

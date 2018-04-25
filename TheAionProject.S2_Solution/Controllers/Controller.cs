@@ -126,6 +126,10 @@ namespace TheAionProject
                         _gameConsoleView.DisplayLookAround();
                         break;
 
+                    case PlayerAction.LookAt:
+                        LookAtAction();
+                        break;
+
                     case PlayerAction.Travel:
                         // Update accessibility
                         UpdateAccessibility();
@@ -215,6 +219,22 @@ namespace TheAionProject
         public void UpdateAccessibility()
         {
             _gameUniverse.UpdateLocation(_gamePlayer);
+        }
+
+        private void LookAtAction()
+        {
+            // display a list of traveler objects in space-time location and get a player choice
+            int gameObjectToLookAtId = _gameConsoleView.DisplayGetGameObjectToLookAt();
+
+            // display game object info
+            if (gameObjectToLookAtId != 0)
+            {
+                // get game object from the universe
+                GameObject gameObject = _gameUniverse.GetGameObjectById(gameObjectToLookAtId);
+
+                // display information for the chosen object
+                _gameConsoleView.DisplayGameObjectinfo(gameObject);
+            }
         }
 
         #endregion
