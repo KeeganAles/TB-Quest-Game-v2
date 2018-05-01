@@ -12,6 +12,19 @@ namespace TheAionProject
         {
             new PlayerObject
             {
+                Id = 100,
+                Name = "Test Object",
+                SpaceTimeLocationId = 0,
+                Description = "Supposed to be a fake and unusable object",
+                Type = PlayerObjectType.Information,
+                CanInventory = true,
+                IsConsumable = false,
+                IsVisible = false,
+                Value = 0
+            },
+
+            new PlayerObject
+            {
                 Id = 210,
                 Name = "Food",
                 SpaceTimeLocationId = 4,
@@ -98,7 +111,7 @@ namespace TheAionProject
                 CanInventory = true,
                 IsConsumable = true,
                 IsVisible = true,
-                Value = 50
+                Value = 0
             }
         };
 

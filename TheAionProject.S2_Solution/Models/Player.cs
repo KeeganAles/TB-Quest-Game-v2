@@ -69,7 +69,7 @@ namespace TheAionProject
             set { _gender = value; }
         }
 
-        public List<PlayerObject> MyProperty
+        public List<PlayerObject> Inventory
         {
             get { return _inventory; }
             set { _inventory = value; }

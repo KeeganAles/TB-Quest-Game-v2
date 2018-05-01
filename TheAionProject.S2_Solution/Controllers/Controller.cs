@@ -55,6 +55,9 @@ namespace TheAionProject
             _gameConsoleView = new ConsoleView(_gamePlayer, _gameUniverse);
             _playingGame = true;
 
+            //add initial item(s) to the player's inventory
+            _gamePlayer.Inventory.Add(_gameUniverse.GetGameObjectById(100) as PlayerObject);
+
             Console.CursorVisible = false;
         }
 
@@ -146,6 +149,10 @@ namespace TheAionProject
 
                     case PlayerAction.LookAt:
                         LookAtAction();
+                        break;
+
+                    case PlayerAction.Inventory:
+                        _gameConsoleView.DisplayInventory();
                         break;
 
                     case PlayerAction.Travel:

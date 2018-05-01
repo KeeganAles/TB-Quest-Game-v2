@@ -502,6 +502,11 @@ namespace TheAionProject
             DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameUniverse.GameObjects), ActionMenu.AdminMenu, "");
         }
 
+        public void DisplayInventory()
+        {
+            DisplayGamePlayScreen("Current Inventory", Text.CurrentInventory(_gamePlayer.Inventory), ActionMenu.MainMenu, "");
+        }
+
         public int DisplayGetGameObjectToLookAt()
         {
             int gameObjectId = 0;
