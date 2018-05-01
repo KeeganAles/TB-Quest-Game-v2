@@ -499,7 +499,7 @@ namespace TheAionProject
 
         public void DisplayListOfAllGameObjects()
         {
-            DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameUniverse.GameObjects), ActionMenu.MainMenu, "");
+            DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameUniverse.GameObjects), ActionMenu.AdminMenu, "");
         }
 
         public int DisplayGetGameObjectToLookAt()
@@ -653,7 +653,7 @@ namespace TheAionProject
             int spaceTimeLocationId = 0;
             bool validSpaceTimeLocationId = false;
 
-            DisplayGamePlayScreen("Travel to a New Space-Time Location", Text.Travel(_gamePlayer, _gameUniverse.SpaceTimeLocations), ActionMenu.MainMenu, "");
+            DisplayGamePlayScreen("Travel to a New Space-Time Location", Text.Travel(_gamePlayer, _gameUniverse.SpaceTimeLocations), ActionMenu.AdminMenu, "");
 
             while (!validSpaceTimeLocationId)
             {

@@ -108,7 +108,15 @@ namespace TheAionProject
                 //
                 // get next game action from player
                 //
-                travelerActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
+                // get next game action from player
+                if (ActionMenu.currentMenu == ActionMenu.CurrentMenu.MainMenu)
+                {
+                    travelerActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
+                }
+                else if (ActionMenu.currentMenu == ActionMenu.CurrentMenu.AdminMenu)
+                {
+                    travelerActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.AdminMenu);
+                }
 
                 //
                 // choose an action based on the player's menu choice
@@ -116,6 +124,16 @@ namespace TheAionProject
                 switch (travelerActionChoice)
                 {
                     case PlayerAction.None:
+                        break;
+
+                    case PlayerAction.AdminMenu:
+                        ActionMenu.currentMenu = ActionMenu.CurrentMenu.AdminMenu;
+                        _gameConsoleView.DisplayGamePlayScreen("Admin Menu", "Select an operation from the menu.", ActionMenu.AdminMenu, "");
+                        break;
+
+                    case PlayerAction.ReturnToMainMenu:
+                        ActionMenu.currentMenu = ActionMenu.CurrentMenu.MainMenu;
+                        _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrentLocationInfo(_currentLocation), ActionMenu.MainMenu, "");
                         break;
 
                     case PlayerAction.PlayerInfo:

@@ -16,6 +16,9 @@ namespace TheAionProject
         LookAround,
         LookAt,
         PickUpItem,
+        PickUp,
+        PutDown,
+        Inventory,
         PickUpTreasure,
         PutDownItem,
         PutDownTreasure,
@@ -28,6 +31,8 @@ namespace TheAionProject
         ListSpaceTimeLocations,
         ListItems,
         ListTreasures,
+        AdminMenu,
+        ReturnToMainMenu,
         Exit
     }
 }

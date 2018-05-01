@@ -28,6 +28,10 @@ namespace TheAionProject
         private int _lives;
         private List<int> _spaceTimeLocationsVisited;
         private bool _gender;
+        private List<PlayerObject> _inventory;
+
+        
+
 
         #endregion
 
@@ -65,6 +69,12 @@ namespace TheAionProject
             set { _gender = value; }
         }
 
+        public List<PlayerObject> MyProperty
+        {
+            get { return _inventory; }
+            set { _inventory = value; }
+        }
+
         #endregion
 
 
@@ -73,11 +83,13 @@ namespace TheAionProject
         public Player()
         {
             _spaceTimeLocationsVisited = new List<int>();
+            _inventory = new List<PlayerObject>();
         }
 
         public Player(string name, RaceType race, int spaceTimeLocationID) : base(name, race, spaceTimeLocationID)
         {
             _spaceTimeLocationsVisited = new List<int>();
+            _inventory = new List<PlayerObject>();
         }
 
         #endregion
