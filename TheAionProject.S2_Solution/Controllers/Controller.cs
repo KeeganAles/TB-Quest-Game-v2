@@ -155,6 +155,10 @@ namespace TheAionProject
                         _gameConsoleView.DisplayInventory();
                         break;
 
+                    case PlayerAction.PickUp:
+                        PickUpAction();
+                        break;
+
                     case PlayerAction.Travel:
                         // Update accessibility
                         UpdateAccessibility();
@@ -259,6 +263,26 @@ namespace TheAionProject
 
                 // display information for the chosen object
                 _gameConsoleView.DisplayGameObjectinfo(gameObject);
+            }
+        }
+
+        private void PickUpAction()
+        {
+            //display a list of player objects in space-time location and get a player choice
+            int playerObjectToPickUpId = _gameConsoleView.DisplayGetPlayerObjectToPickUp();
+
+            //add the player object to player's inventory
+            if (playerObjectToPickUpId != 0)
+            {
+                // get the game object from the universe
+                PlayerObject playerObject = _gameUniverse.GetGameObjectById(playerObjectToPickUpId) as PlayerObject;
+
+                // note: player object is added to list and the space-time location is set to 0
+                _gamePlayer.Inventory.Add(playerObject);
+                playerObject.SpaceTimeLocationId = 0;
+
+                // display confirmation message
+                _gameConsoleView.DisplayConfirmPlayerObjectAddedToInventory(playerObject);
             }
         }
 

@@ -420,6 +420,46 @@ namespace TheAionProject
             return gameObjects;
         }
 
+        public bool IsValidPlayerObjectByLocationId(int playerObjectId, int currentSpaceTimeLocation)
+        {
+            List<int> playerObjectIds = new List<int>();
+
+            // create a list of player onject ids in current space-time location
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.SpaceTimeLocationId == currentSpaceTimeLocation && gameObject is PlayerObject)
+                {
+                    playerObjectIds.Add(gameObject.Id);
+                }
+            }
+
+            //determine if the game object id is a valid id and return the result
+            if (playerObjectIds.Contains(playerObjectId))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public List<PlayerObject> GetPlayerObjectsBySpaceTimeLocation(int spaceTimeLocationId)
+        {
+            List<PlayerObject> playerObjects = new List<PlayerObject>();
+
+            // run through the game object list and grab all that are in the current space-time location
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.SpaceTimeLocationId == spaceTimeLocationId && gameObject is PlayerObject)
+                {
+                    playerObjects.Add(gameObject as PlayerObject);
+                }
+            }
+
+            return playerObjects;
+        }
+
         #endregion
     }
 }

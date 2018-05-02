@@ -710,6 +710,56 @@ namespace TheAionProject
             DisplayGamePlayScreen("List: Space-Time Locations", Text.ListSpaceTimeLocations(_gameUniverse.SpaceTimeLocations), ActionMenu.MainMenu, "");
         }
 
+        public int DisplayGetPlayerObjectToPickUp()
+        {
+            int gameObjectId = 0;
+            bool validGamerObjectId = false;
+
+            // get a list of player objects in the current space-time location
+            List<PlayerObject> playerObjectsInSpaceTimeLocation = _gameUniverse.GetPlayerObjectsBySpaceTimeLocation(_gamePlayer.SpaceTimeLocationID);
+
+            if (playerObjectsInSpaceTimeLocation.Count > 0)
+            {
+                DisplayGamePlayScreen("Pick Up Game Object", Text.GameObjectsChooseList(playerObjectsInSpaceTimeLocation), ActionMenu.MainMenu, "");
+
+                while (!validGamerObjectId)
+                {
+                    // get an integer from the player
+                    GetInteger($"Enter the Id number of the object you wish to add to your inventory: ", 0, 0, out gameObjectId);
+
+                    // validate integer as a valid game object id and in current location
+                    if (_gameUniverse.IsValidPlayerObjectByLocationId(gameObjectId, _gamePlayer.SpaceTimeLocationID))
+                    {
+                        PlayerObject playerObject = _gameUniverse.GetGameObjectById(gameObjectId) as PlayerObject;
+                        if (playerObject.CanInventory)
+                        {
+                            validGamerObjectId = true;
+                        }
+                        else
+                        {
+                            ClearInputBox();
+                            DisplayInputErrorMessage("It appears you may not inventory that object. Please try again.");
+                        }
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("It appears you entered an invalid game object id. Please try again.");
+                    }
+                }
+            }
+            else
+            {
+                DisplayGamePlayScreen("Pick Up Game Object", "It appears there are no game objects here.", ActionMenu.MainMenu, "");
+            }
+
+            return gameObjectId;
+        }
+
+        public void DisplayConfirmPlayerObjectAddedToInventory(PlayerObject objectAddedToInventory)
+        {
+            DisplayGamePlayScreen("Pick Up Game Object", $"The {objectAddedToInventory.Name} has been added to your inventory.", ActionMenu.MainMenu, "");
+        }
         #endregion
 
         #endregion
