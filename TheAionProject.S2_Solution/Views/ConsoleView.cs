@@ -760,6 +760,49 @@ namespace TheAionProject
         {
             DisplayGamePlayScreen("Pick Up Game Object", $"The {objectAddedToInventory.Name} has been added to your inventory.", ActionMenu.MainMenu, "");
         }
+
+        public int DisplayGetInventoryObjectToPutDown()
+        {
+            int playerObjectId = 0;
+            bool validInventoryObjectId = false;
+
+            if (_gamePlayer.Inventory.Count > 0)
+            {
+                DisplayGamePlayScreen("Put Down Game Object", Text.GameObjectsChooseList(_gamePlayer.Inventory), ActionMenu.MainMenu, "");
+
+                while (!validInventoryObjectId)
+                {
+                    // get an integer from the player
+                    GetInteger($"Enter the Id of the object you wish to remove from your inventory: ", 0, 0, out playerObjectId);
+
+                    //find object in inventory
+                    //note: LINQ used, but a foreach loop may also be used
+                    PlayerObject objectToPutDown = _gamePlayer.Inventory.FirstOrDefault(o => o.Id == playerObjectId);
+
+                    // validate object in inventory
+                    if (objectToPutDown != null)
+                    {
+                        validInventoryObjectId = true;
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("It appears you entered the Id of an object not in your inventory. Please try again.");
+                    }
+                }
+            }
+            else
+            {
+                DisplayGamePlayScreen("Put Down Game Object", "It appears there are no objects currently in inventory.", ActionMenu.MainMenu, "");
+            }
+
+            return playerObjectId;
+        }
+
+        public void DisplayConfirmPlayerObjectRemovedFromInventory(PlayerObject objectRemovedFromInventory)
+        {
+            DisplayGamePlayScreen("Put Down Game Object", $"The {objectRemovedFromInventory.Name} has been removed from your inventory.", ActionMenu.MainMenu, "");
+        }
         #endregion
 
         #endregion

@@ -151,6 +151,10 @@ namespace TheAionProject
                         LookAtAction();
                         break;
 
+                    case PlayerAction.PutDown:
+                        PutDownAction();
+                        break;
+
                     case PlayerAction.Inventory:
                         _gameConsoleView.DisplayInventory();
                         break;
@@ -284,6 +288,22 @@ namespace TheAionProject
                 // display confirmation message
                 _gameConsoleView.DisplayConfirmPlayerObjectAddedToInventory(playerObject);
             }
+        }
+
+        private void PutDownAction()
+        {
+            // display a list of traveler objects in inventory and get a player choice
+            int inventoryObjectToPutDownId = _gameConsoleView.DisplayGetInventoryObjectToPutDown();
+
+            // get the game object from the universe
+            PlayerObject playerObject = _gameUniverse.GetGameObjectById(inventoryObjectToPutDownId) as PlayerObject;
+
+            // remove the object from inventory and set the space-time location to current value
+            _gamePlayer.Inventory.Remove(playerObject);
+            playerObject.SpaceTimeLocationId = _gamePlayer.SpaceTimeLocationID;
+
+            // display confirmation message
+            _gameConsoleView.DisplayConfirmPlayerObjectAddedToInventory(playerObject);
         }
 
         #endregion
